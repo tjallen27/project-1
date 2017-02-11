@@ -3,6 +3,8 @@ $(()=>{
 
   const $playBtn = $('.play-btn');
   const $landingPlay = $('.landing-play');
+  const $htp = $('.how-to-play');
+  const $htpBtn = $('.htp-btn');
   const $gameBoard = $('.game-board');
   const $duck = $('.duck');
   const $goose = $('.goose');
@@ -137,7 +139,9 @@ $(()=>{
         returnToStartDuck();
         returnToStartGoose();
         $duck.hide();
+        $duck.stop();
         $goose.hide();
+        $goose.stop();
         $timer.hide();
         $timer.text('');
         $gameOverDisplay.html($score);
@@ -149,6 +153,13 @@ $(()=>{
 
   ///// When landing button is clicked, scroll to top of game-screen
   $landingPlay.on('click' , ()=>{
+    $('html, body').animate({
+      scrollTop: $htp.offset().top
+    }, 2000);
+    event.preventDefault();
+  });
+
+  $htpBtn.on('click' , ()=>{
     $('html, body').animate({
       scrollTop: $gameBoard.offset().top
     }, 2000);
