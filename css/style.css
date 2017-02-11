@@ -1,8 +1,13 @@
+/** {
+  box-sizing: border-box;
+}*/
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Kaushan Script', cursive;
   font-weight: 300;
+  overflow: auto;
 }
 
 .landing-page {
@@ -13,30 +18,31 @@ body {
 }
 
 .card {
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   position: relative;
   height: 250px;
-  width: 400px;
-  border: 1px solid #fff;
-  background: white;
+  width: 70%;
 }
 
 .card h1 {
   text-align: center;
-  margin-top: 20%;
-  font-size: 3em;
+  font-size: 10em;
   font-family: 'Kaushan Script', cursive;
+  background-image: -webkit-linear-gradient(left, rgba(178,5,247,1) 0%, rgba(247,247,247,1) 100%);
+  color:transparent;
+ -webkit-background-clip: text;
+ background-clip: text;
 }
 
 button.landing-play {
   position: absolute;
   display: block;
   left: 50%;
-  bottom: -50px;
-  width: 200px;
-  padding: 0 50px;
+  margin-top: 150px;
+  width: 400px;
+  padding: 20px 50px;
   transform: translateX(-50%) translateY(-50%);
   font-family: 'Kaushan Script', cursive;
   font-size: 28px;
@@ -181,6 +187,10 @@ button.landing-play {
     transform: translateX(-50%) translateY(-50%);
     background: url('../images/cruiser.png');
     z-index: 0;
+}
+
+.lower-duck {
+  top: 58%;
 }
 
 .goose {

@@ -16,16 +16,27 @@ $(()=>{
   let timerIsRunning = false;
   let timerId = null;
   let $animateCounter = 1;
+  const animateHeight = (Math.floor(Math.random() * 21) + 30)+'%';
 
   //// Animation function
   function animateDuck(){
-    $duck.animate({
-      left: '105%'
-    }, 5000, 'linear', function() {
-      $duck.css({ left: '-50px'});
-      animateDuck();
-    } );
-    console.log('Duck Animated!');
+    if ($animateCounter % 2 === 0 ){
+      $duck.animate({
+        left: '105%'
+      }, 5000, 'linear', function() {
+        $duck.css({ left: '-50px'});
+        animateDuck();
+      } );
+      console.log('Duck Animated!');
+    }
+    { if ($animateCounter % 2 === 1){
+      $duck.animate({
+        left: '105%'
+      }, 5000, 'linear', function() {
+        $duck.css({ left: '-50px', top: animateHeight});
+        animateDuck();
+      } );
+    }}
   }
 
   function animateGoose(){
@@ -92,11 +103,7 @@ $(()=>{
     $duck.on('click', ()=>{
       //// run returnToStart
       $animateCounter++;
-      if ($animateCounter%2===0){
-        $duck.css('top', '-32%');
-      } if ($animateCounter%2===1) {
-        $duck.css('top', '-50%');
-      }
+      console.log($animateCounter);
       returnToStartDuck();
       console.log('Duck clicked!');
       //// add 1 to current score
