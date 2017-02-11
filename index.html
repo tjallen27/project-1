@@ -2,11 +2,44 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Project 1</title>
+    <title>Duck Hunt</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
     <script src="js/app.js" charset="utf-8"></script>
   </head>
   <body>
+    <section class="landing-page">
+      <div class="card">
+        <h1>SPACE ZAP</h1>
+        <button class="landing-play">PLAY</button>
+      </div>
+    </section>
+    <section class="game-screen">
+      <div class="left-cover"></div>
+      <div class="game-board">
+        <button class="play-btn">Ready?</button>
+        <div class="duck">
+        </div>
+        <div class="goose">
+        </div>
+        <div class="timer">20
+        </div>
+        <div class="score">0
+        </div>
+        <div class="grass">
+        </div>
 
+        <div class="gameover">
+          <h2>GAME OVER</h2>
+          <p>Score: <span class="game-over-score"></span></p>
+          <button class="play-again">Play again?</button>
+        </div>
+      </div>
+      <div class="right-cover"></div>
+    </section>
   </body>
 </html>

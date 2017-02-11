@@ -1,3 +1,237 @@
 body {
-  background-color: red;
+  margin: 0;
+  padding: 0;
+  font-family: 'Kaushan Script', cursive;
+  font-weight: 300;
+}
+
+.landing-page {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background: -webkit-linear-gradient(top, rgba(0,0,255,1) 0%, rgba(240,0,244,1) 0%, rgba(255,255,255,1) 99%, rgba(255,255,255,1) 100%);
+}
+
+.card {
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  position: relative;
+  height: 250px;
+  width: 400px;
+  border: 1px solid #fff;
+  background: white;
+}
+
+.card h1 {
+  text-align: center;
+  margin-top: 20%;
+  font-size: 3em;
+  font-family: 'Kaushan Script', cursive;
+}
+
+button.landing-play {
+  position: absolute;
+  display: block;
+  left: 50%;
+  bottom: -50px;
+  width: 200px;
+  padding: 0 50px;
+  transform: translateX(-50%) translateY(-50%);
+  font-family: 'Kaushan Script', cursive;
+  font-size: 28px;
+  border-top: 4px solid red;
+  border-bottom: 4px solid red;
+  border-left: none;
+  border-right: none;
+  background: red;
+  color: #fff;
+}
+
+.landing-play:hover,
+.landing-play:active{
+  letter-spacing: 5px;
+  border-top: 4px solid #fff;
+  border-bottom: 4px solid #fff;
+  transition: all 0.5s ease-in-out;
+}
+
+.play-btn {
+  display: block;
+  position: absolute;
+  height: 80px;
+  width: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  outline: none;
+  font-size: 28px;
+  letter-spacing: 0;
+  background: red;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 300;
+  border-top: 4px solid red;
+  border-bottom: 4px solid red;
+  border-left: none;
+  border-right: none;
+}
+
+.play-btn:hover,
+.play-btn:active {
+  letter-spacing: 5px;
+  border-top: 4px solid #fff;
+  border-bottom: 4px solid #fff;
+  transition: all 0.5s ease-in-out;
+}
+
+.game-screen {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.game-board {
+  border: 5px solid black;
+  position: absolute;
+  height: 550px;
+  width: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background: url('../images/background-lg.jpg');
+}
+
+.left-cover {
+  z-index: 10;
+  height: 400px;
+  width:300px;
+  border: 2px solid white;
+  margin-top: 200px;
+  margin-left: 10px;
+  background: white;
+  position: absolute;
+}
+
+.right-cover {
+  z-index: 10;
+  height: 400px;
+  width:400px;
+  border: 2px solid white;
+  margin-top: 200px;
+  margin-left: 1125px;
+  background: white;
+  position: absolute;
+}
+
+.game-board:hover {
+  cursor: url('../images/cursor.png'), crosshair;;
+}
+
+.score {
+  height: 60px;
+  width: 150px;
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-top: 3px solid #000;
+  border-left: 4px solid #000;
+  border-bottom: 4px solid #000;
+  border-right: 4px solid #000;
+  background: white;
+  color: black;
+  font-size: 42px;
+  text-align: center;
+  padding: 5px 0;
+
+}
+
+.timer {
+  height: 60px;
+  width: 100px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background: #fff;
+  font-size: 28px;
+  color: #000;
+  border: 4px solid #000;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.grass {
+  height: 80px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.duck {
+    height: 38px;
+    width: 100px;
+    position: absolute;
+    top: 32%;
+    left: -50px;
+    transform: translateX(-50%) translateY(-50%);
+    background: url('../images/cruiser.png');
+    z-index: 0;
+}
+
+.goose {
+    height: 98px;
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    transform: translateX(-50%) translateY(-50%);
+    background: url('../images/cargoship.png');
+    z-index: 0;
+}
+
+.gameover {
+  border: 2px solid black;
+  position: absolute;
+  height: 140px;
+  width: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border: 5px solid purple;
+  border-radius: 10px;
+  background: black;
+  color: white;
+  text-align: center;
+  padding-top: 40px;
+  display: none;
+}
+
+.gameover p {
+  font-size: 24px;
+  margin: 8px;
+}
+
+.game-over-score {
+  font-size: 28px;
+}
+
+.play-again {
+  top: -50px;
+  width: 200px;
+  font-size: 24px;
+  background: red;
+  font-family: 'Kaushan Script', cursive;
+  border: 2px solid white;
+  color: white;
+}
+
+.play-again:hover,
+.play-again:active {
+  letter-spacing: 2px;
+  transition: letter-spacing 1s ease;
 }
