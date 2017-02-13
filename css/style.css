@@ -90,10 +90,9 @@ button.landing-play {
 }
 
 .how-to-play {
-  height: 100vh;
-  width: 600px;
-  margin: 0 auto;
-  padding-top: 40px;
+  max-width: 600px;
+  text-align: center;
+  margin: 40px auto;
 }
 
 .how-to-play h2 {
@@ -103,21 +102,21 @@ button.landing-play {
 
 .how-to-play p {
   font-size: 28px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .how-to-play img {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
-.htp-btn {
-  display: block;
-  position: relative;
+.level-list {
+  margin-top: 20%;
+}
+
+.level-one {
   height: 80px;
   width: 400px;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  margin: 0 auto;
   outline: none;
   font-size: 28px;
   letter-spacing: 0;
@@ -129,12 +128,13 @@ button.landing-play {
   border-bottom: 4px solid red;
   border-left: none;
   border-right: none;
+  padding: 10px 30px;
   font-family: 'Mountains of Christmas', cursive;
   transition: all 0.5s ease-in-out;
 }
 
-.htp-btn:hover,
-.htp-btn:active {
+.level-one:hover,
+.level-one:active {
   letter-spacing: 5px;
   border-top: 4px solid #fff;
   border-bottom: 4px solid #fff;
@@ -188,10 +188,7 @@ button.landing-play {
 .score {
   height: 60px;
   width: 150px;
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  margin: -20px auto 0;
   border-top: 3px solid #000;
   border-left: 4px solid #000;
   border-bottom: 4px solid #000;
@@ -240,8 +237,15 @@ button.landing-play {
   z-index: 0;
 }
 
-.lower-duck {
-  top: 58%;
+.superman {
+  height: 99px;
+  width: 250px;
+  position: absolute;
+  top: 32%;
+  left: -250px;
+  transform: translateX(-50%) translateY(-50%);
+  background: url('../images/superman.png');
+  z-index: 0;
 }
 
 .goose {
@@ -256,24 +260,23 @@ button.landing-play {
 }
 
 .gameover {
-  border: 2px solid black;
   position: absolute;
   height: 140px;
   width: 300px;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  border: 5px solid purple;
   border-radius: 10px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.4);
   color: white;
   text-align: center;
   padding-top: 40px;
   display: none;
+  font-size: 52px;
 }
 
 .gameover p {
-  font-size: 24px;
+  font-size: 28px;
   margin: 8px;
 }
 
@@ -282,7 +285,7 @@ button.landing-play {
 }
 
 .play-again {
-  top: -50px;
+  top: 50px;
   width: 200px;
   font-size: 24px;
   background: red;

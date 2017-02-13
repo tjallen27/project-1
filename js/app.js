@@ -4,10 +4,11 @@ $(()=>{
   const $playBtn = $('.play-btn');
   const $landingPlay = $('.landing-play');
   const $htp = $('.how-to-play');
-  const $htpBtn = $('.htp-btn');
+  const $levelOne = $('.level-one');
   const $gameBoard = $('.game-board');
   const $duck = $('.duck');
   const $goose = $('.goose');
+  const $superman = $('.superman');
   const $scoreDisplay = $('.score');
   const $timer = $('.timer');
   const $gameOver = $('.gameover');
@@ -39,7 +40,17 @@ $(()=>{
       animateGoose();
     } );
     console.log('Goose Animated!');
+  }
 
+  function animateSuperman(){
+    const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
+    $superman.delay(3000).animate({
+      left: '105%'
+    }, 2000, 'linear', function() {
+      $superman.css({ left: '-250px', top: animateHeight});
+      animateSuperman();
+    } );
+    console.log('Superman Animated!');
   }
 
   //// Hide duck
@@ -50,6 +61,11 @@ $(()=>{
 
   function hideGoose(){
     $goose.hide();
+    console.log('Goose hidden!');
+  }
+
+  function hideSuperman(){
+    $superman.hide();
     console.log('Goose hidden!');
   }
 
@@ -64,6 +80,11 @@ $(()=>{
     $goose.css({ left: '-150px', top: animateHeight});
     console.log('Goose Replaced!');
   }
+  function supermanReplaced(){
+    const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
+    $superman.css({ left: '-150px', top: animateHeight});
+    console.log('Superman Replaced!');
+  }
 
   //// Show duck
   function showDuck(){
@@ -73,6 +94,10 @@ $(()=>{
   function showGoose(){
     $goose.show();
     console.log('Goose shown!');
+  }
+  function showSuperman(){
+    $superman.show();
+    console.log('Superman shown!');
   }
 
   //// When duck reaches end or is clicked, return to start position.
@@ -90,6 +115,14 @@ $(()=>{
     gooseReplaced();
     showGoose();
     animateGoose();
+  }
+
+  function returnToStartSuperman(){
+    $superman.stop();
+    hideSuperman();
+    supermanReplaced();
+    showSuperman();
+    animateSuperman();
   }
 
   //// Duck clicked
@@ -113,10 +146,21 @@ $(()=>{
       $scoreDisplay.html($score);
     });
   }
+  function supermanClicked(){
+    $superman.on('click', ()=>{
+      //// run returnToStart
+      returnToStartSuperman();
+      console.log('Superman clicked!');
+      //// add 1 to current score
+      $score+=50;
+      $scoreDisplay.html($score);
+    });
+  }
 
   //// Run duckClicked
   duckClicked();
   gooseClicked();
+  supermanClicked();
 
   //// Start timer
   function startGame() {
@@ -132,6 +176,8 @@ $(()=>{
         $duck.stop();
         $goose.hide();
         $goose.stop();
+        $superman.hide();
+        $superman.stop();
         $timer.hide();
         $timer.text('');
         $gameOverDisplay.html($score);
@@ -149,7 +195,7 @@ $(()=>{
     event.preventDefault();
   });
 
-  $htpBtn.on('click' , ()=>{
+  $levelOne.on('click' , ()=>{
     $('html, body').animate({
       scrollTop: $gameBoard.offset().top
     }, 2000);
@@ -164,6 +210,7 @@ $(()=>{
     //// Begin animation
     animateDuck();
     animateGoose();
+    animateSuperman();
     startGame();
   });
 
@@ -175,9 +222,11 @@ $(()=>{
     $scoreDisplay.html($score);
     $duck.show();
     $goose.show();
+    $superman.show();
     $timer.show();
     returnToStartDuck();
     returnToStartGoose();
+    returnToStartSuperman();
     startGame();
   });
 });
