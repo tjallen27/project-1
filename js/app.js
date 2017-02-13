@@ -17,35 +17,25 @@ $(()=>{
   let timeRemaining = 20;
   let timerIsRunning = false;
   let timerId = null;
-  let $animateCounter = 1;
-  const animateHeight = (Math.floor(Math.random() * 21) + 30)+'%';
 
   //// Animation function
   function animateDuck(){
-    if ($animateCounter % 2 === 0 ){
-      $duck.animate({
-        left: '105%'
-      }, 5000, 'linear', function() {
-        $duck.css({ left: '-50px'});
-        animateDuck();
-      } );
-      console.log('Duck Animated!');
-    }
-    { if ($animateCounter % 2 === 1){
-      $duck.animate({
-        left: '105%'
-      }, 5000, 'linear', function() {
-        $duck.css({ left: '-50px', top: animateHeight});
-        animateDuck();
-      } );
-    }}
+    const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
+    $duck.animate({
+      left: '105%'
+    }, 5000, 'linear', function() {
+      $duck.css({ left: '-50px', top: animateHeight});
+      animateDuck();
+    } );
+    console.log('Duck Animated!');
   }
 
   function animateGoose(){
+    const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
     $goose.delay(2000).animate({
       left: '105%'
     }, 4000, 'linear', function() {
-      $goose.css({ left: '-150px' });
+      $goose.css({ left: '-150px', top: animateHeight });
       animateGoose();
     } );
     console.log('Goose Animated!');
@@ -65,12 +55,14 @@ $(()=>{
 
   //// Move duck back to original position
   function duckReplaced(){
-    $duck.css('left', '-50px');
+    const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
+    $duck.css({ left: '-50px', top: animateHeight});
     console.log('Duck Replaced!');
   }
   function gooseReplaced(){
-    $goose.css('left', '-150px');
-    console.log('Duck Replaced!');
+    const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
+    $goose.css({ left: '-150px', top: animateHeight});
+    console.log('Goose Replaced!');
   }
 
   //// Show duck
@@ -104,8 +96,6 @@ $(()=>{
   function duckClicked(){
     $duck.on('click', ()=>{
       //// run returnToStart
-      $animateCounter++;
-      console.log($animateCounter);
       returnToStartDuck();
       console.log('Duck clicked!');
       //// add 1 to current score
