@@ -5,54 +5,69 @@
     <title>SpaceZap</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Mountains+of+Christmas" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Poppins:300,400,500,700" rel="stylesheet">
     <script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="js/app.js" charset="utf-8"></script>
   </head>
   <body>
+    <audio class="sound" src="4.wav"></audio>
+
+    <!-- LANDING PAGE -->
     <section class="landing-page">
       <div class="card">
         <h1>SPACE ZAP</h1>
         <button class="landing-play">How to play</button>
       </div>
     </section>
+
+    <!-- HOW TO PLAY -->
     <section class="how-to-play">
       <h2>Rules</h2>
-      <p>Click on spaceships to destroy them.</p>
+      <h3>Click on spaceships to destroy them.</h3>
+      <p>50 points each. Zap as many as you can!</p>
+      <!-- game images -->
       <ul>
         <li>
-          <img src="images/cruiser.png" alt=""><p>5 points</p>
+          <img src="images/cruiser.png" alt="">
         </li>
         <li>
-          <img src="images/cargoship.png" alt=""><p>20 points</p>
+          <img src="images/cargoship.png" alt="">
         </li>
         <li>
-          <img src="images/superman.png" alt=""><p>50 points</p>
+          <img src="images/superman.png" alt="">
         </li>
       </ul>
       <div class="level-list">
-        <button class="level-one">Go to game!</button>
+        <button class="toGame">Go to game!</button>
       </div>
     </section>
+
+    <!-- MAIN GAME SCREEN -->
     <section class="game-screen">
       <div class="game-board">
-        <button class="play-btn">Ready?</button>
-        <div class="duck">
+        <button class="play-btn">Start Level 1!</button>
+        <div class="ship1 target">
         </div>
-        <div class="goose">
+        <div class="ship2 target">
         </div>
-        <div class="superman">
+        <div class="superman target">
         </div>
-        <div class="timer">20
+        <div class="timer">25
         </div>
         <div class="score">0
         </div>
         <div class="grass">
         </div>
+        <div class="levelUp levelTwoDisplay">
+          <h3>Level 2!</h3>
+        </div>
+        <div class="levelUp levelThreeDisplay">
+          <h3>Level 3!</h3>
+        </div>
 
+        <!-- Game over screen -->
         <div class="gameover">
           <h2>GAME OVER</h2>
           <p>Score: <span class="game-over-score"></span></p>

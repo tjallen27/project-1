@@ -4,163 +4,70 @@ $(()=>{
   const $playBtn = $('.play-btn');
   const $landingPlay = $('.landing-play');
   const $htp = $('.how-to-play');
-  const $levelOne = $('.level-one');
+  const $toGame = $('.toGame');
   const $gameBoard = $('.game-board');
-  const $duck = $('.duck');
-  const $goose = $('.goose');
+  const $shipOne = $('.ship1');
+  const $shipTwo = $('.ship2');
   const $superman = $('.superman');
   const $scoreDisplay = $('.score');
   const $timer = $('.timer');
   const $gameOver = $('.gameover');
   const $gameOverDisplay = $('.game-over-score');
   const $playAgain = $('.play-again');
+  const $allTargets = $('.target');
+  const $levelTwoDisplay = $('.levelTwoDisplay');
+  const $levelThreeDisplay = $('.levelThreeDisplay');
   let $score = 0;
-  let timeRemaining = 20;
-  let timerIsRunning = false;
+  let timeRemaining = 25;
   let timerId = null;
+  let level = 1;
 
-  //// Animation function
-  function animateDuck(){
+  //// Animate element
+  function animate($elem){
+    const delay = level === 1 ? 8000 : level === 2 ? 5000 : 3000;
     const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
-    $duck.animate({
+    $elem.animate({
       left: '105%'
-    }, 5000, 'linear', function() {
-      $duck.css({ left: '-50px', top: animateHeight});
-      animateDuck();
+    }, delay, 'linear', function() {
+      $elem.css({ left: '-150px', top: animateHeight});
+      animate($elem);
     } );
-    console.log('Duck Animated!');
   }
 
-  function animateGoose(){
+  //// When element reaches end or is clicked, return to start position.
+  function returnToStart($elem){
     const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
-    $goose.delay(2000).animate({
-      left: '105%'
-    }, 4000, 'linear', function() {
-      $goose.css({ left: '-150px', top: animateHeight });
-      animateGoose();
-    } );
-    console.log('Goose Animated!');
+
+    $elem
+      .stop()
+      .hide()
+      .css({ left: '-150px', top: animateHeight })
+      .show();
+
+    animate($elem);
   }
 
-  function animateSuperman(){
-    const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
-    $superman.delay(3000).animate({
-      left: '105%'
-    }, 2000, 'linear', function() {
-      $superman.css({ left: '-250px', top: animateHeight});
-      animateSuperman();
-    } );
-    console.log('Superman Animated!');
-  }
+  $allTargets.on('click', (e)=>{
+    $('.sound')[0].play();
+    //// run returnToStart
+    returnToStart($(e.target));
+    //// add 50 to current score
+    $score += 50;
+    $scoreDisplay.html($score);
 
-  //// Hide duck
-  function hideDuck(){
-    $duck.hide();
-    console.log('Duck hidden!');
-  }
+    //// LEVEL UP
+    if ($score === 600){
+      level = 2;
+      console.log('level 2 reached!');
+      $levelTwoDisplay.fadeIn('slow').fadeOut();
+    }
+    if ($score === 1200){
+      level = 3 ;
+      console.log('level 3 reached!');
+      $levelThreeDisplay.fadeIn('slow').fadeOut();
+    }
+  });
 
-  function hideGoose(){
-    $goose.hide();
-    console.log('Goose hidden!');
-  }
-
-  function hideSuperman(){
-    $superman.hide();
-    console.log('Goose hidden!');
-  }
-
-  //// Move duck back to original position
-  function duckReplaced(){
-    const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
-    $duck.css({ left: '-50px', top: animateHeight});
-    console.log('Duck Replaced!');
-  }
-  function gooseReplaced(){
-    const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
-    $goose.css({ left: '-150px', top: animateHeight});
-    console.log('Goose Replaced!');
-  }
-  function supermanReplaced(){
-    const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
-    $superman.css({ left: '-150px', top: animateHeight});
-    console.log('Superman Replaced!');
-  }
-
-  //// Show duck
-  function showDuck(){
-    $duck.show();
-    console.log('Duck shown!');
-  }
-  function showGoose(){
-    $goose.show();
-    console.log('Goose shown!');
-  }
-  function showSuperman(){
-    $superman.show();
-    console.log('Superman shown!');
-  }
-
-  //// When duck reaches end or is clicked, return to start position.
-  function returnToStartDuck(){
-    $duck.stop();
-    hideDuck();
-    duckReplaced();
-    showDuck();
-    animateDuck();
-  }
-
-  function returnToStartGoose(){
-    $goose.stop();
-    hideGoose();
-    gooseReplaced();
-    showGoose();
-    animateGoose();
-  }
-
-  function returnToStartSuperman(){
-    $superman.stop();
-    hideSuperman();
-    supermanReplaced();
-    showSuperman();
-    animateSuperman();
-  }
-
-  //// Duck clicked
-  function duckClicked(){
-    $duck.on('click', ()=>{
-      //// run returnToStart
-      returnToStartDuck();
-      console.log('Duck clicked!');
-      //// add 1 to current score
-      $score+=5;
-      $scoreDisplay.html($score);
-    });
-  }
-  function gooseClicked(){
-    $goose.on('click', ()=>{
-      //// run returnToStart
-      returnToStartGoose();
-      console.log('Goose clicked!');
-      //// add 1 to current score
-      $score+=20;
-      $scoreDisplay.html($score);
-    });
-  }
-  function supermanClicked(){
-    $superman.on('click', ()=>{
-      //// run returnToStart
-      returnToStartSuperman();
-      console.log('Superman clicked!');
-      //// add 1 to current score
-      $score+=50;
-      $scoreDisplay.html($score);
-    });
-  }
-
-  //// Run duckClicked
-  duckClicked();
-  gooseClicked();
-  supermanClicked();
 
   //// Start timer
   function startGame() {
@@ -170,14 +77,10 @@ $(()=>{
 
       if(timeRemaining === 0) {
         clearInterval(timerId);
-        returnToStartDuck();
-        returnToStartGoose();
-        $duck.hide();
-        $duck.stop();
-        $goose.hide();
-        $goose.stop();
-        $superman.hide();
-        $superman.stop();
+        returnToStart($allTargets);
+        $allTargets
+          .stop()
+          .hide();
         $timer.hide();
         $timer.text('');
         $gameOverDisplay.html($score);
@@ -195,7 +98,7 @@ $(()=>{
     event.preventDefault();
   });
 
-  $levelOne.on('click' , ()=>{
+  $toGame.on('click' , ()=>{
     $('html, body').animate({
       scrollTop: $gameBoard.offset().top
     }, 2000);
@@ -208,25 +111,23 @@ $(()=>{
     //// Fade out button
     $playBtn.fadeOut('fast');
     //// Begin animation
-    animateDuck();
-    animateGoose();
-    animateSuperman();
+    animate($allTargets);
     startGame();
   });
 
   $playAgain.on('click', ()=>{
     $gameOver.hide();
-    timeRemaining = 20;
-    $timer.text('20');
+    timeRemaining = 25;
+    $timer.text('25');
     $score = 0;
+    level = 1;
     $scoreDisplay.html($score);
-    $duck.show();
-    $goose.show();
-    $superman.show();
+    $allTargets.show();
     $timer.show();
-    returnToStartDuck();
-    returnToStartGoose();
-    returnToStartSuperman();
+    returnToStart($shipOne);
+    returnToStart($shipTwo);
+    returnToStart($superman);
     startGame();
   });
+
 });

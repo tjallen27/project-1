@@ -1,15 +1,21 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Mountains of Christmas', cursive;
+  font-family: 'Poppins', sans-serif;
   font-weight: 300;
   overflow: auto;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .landing-page {
   width: 100%;
   height: 100vh;
   position: relative;
+  background-image: url('../images/text-background1.jpg');
+  background-size: cover;
 }
 
 .card {
@@ -25,11 +31,13 @@ body {
   font-weight: bold;
   text-align: center;
   font-size: 12em;
-  font-family: 'Mountains of Christmas', cursive;
-  background-image: url('../images/text-background.jpg');
+  font-family: 'Poppins', sans-serif;
+  color: rgba(255, 255, 255, 0.6);
+  /*background-image: url('../images/text-background1.jpg');
+  background-size: contain;
   color:transparent;
  -webkit-background-clip: text;
- background-clip: text;
+ background-clip: text;*/
 }
 
 button.landing-play {
@@ -40,8 +48,9 @@ button.landing-play {
   width: 400px;
   padding: 20px 50px;
   transform: translateX(-50%) translateY(-50%);
-  font-family: 'Mountains of Christmas', cursive;
+  font-family: 'Poppins', sans-serif;
   font-size: 28px;
+  font-weight: 300;
   border-top: 4px solid red;
   border-bottom: 4px solid red;
   border-left: none;
@@ -62,7 +71,7 @@ button.landing-play {
   display: block;
   position: absolute;
   height: 80px;
-  width: 200px;
+  width: 300px;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
@@ -77,7 +86,7 @@ button.landing-play {
   border-bottom: 4px solid red;
   border-left: none;
   border-right: none;
-  font-family: 'Mountains of Christmas', cursive;
+  font-family: 'Poppins', sans-serif;
   transition: all 0.5s ease-in-out;
 }
 
@@ -90,9 +99,10 @@ button.landing-play {
 }
 
 .how-to-play {
-  max-width: 600px;
+  max-width: 880px;
   text-align: center;
-  margin: 40px auto;
+  margin: 0 auto;
+  padding: 15% 0;
 }
 
 .how-to-play h2 {
@@ -100,20 +110,29 @@ button.landing-play {
   text-decoration: underline;
 }
 
+.how-to-play h3 {
+  margin-top: 30px;
+  font-size: 26px;
+}
+
 .how-to-play p {
   font-size: 28px;
-  margin-top: 10px;
+}
+
+.how-to-play li {
+  display: inline;
 }
 
 .how-to-play img {
   margin-top: 30px;
+  margin-right: 20px;
 }
 
 .level-list {
   margin-top: 20%;
 }
 
-.level-one {
+.toGame {
   height: 80px;
   width: 400px;
   margin: 0 auto;
@@ -129,12 +148,12 @@ button.landing-play {
   border-left: none;
   border-right: none;
   padding: 10px 30px;
-  font-family: 'Mountains of Christmas', cursive;
+  font-family: 'Poppins', sans-serif;
   transition: all 0.5s ease-in-out;
 }
 
-.level-one:hover,
-.level-one:active {
+.toGame:hover,
+.toGame:active {
   letter-spacing: 5px;
   border-top: 4px solid #fff;
   border-bottom: 4px solid #fff;
@@ -144,11 +163,11 @@ button.landing-play {
   width: 100%;
   height: 100vh;
   position: relative;
+  background-image: url('../images/text-background1.jpg');
+  background-size: cover;
 }
 
 .game-board {
-  border-left: 225px solid white;
-  border-right: 225px solid white;
   position: absolute;
   height: 550px;
   width: 100%;
@@ -186,34 +205,31 @@ button.landing-play {
 }
 
 .score {
-  height: 60px;
-  width: 150px;
-  margin: -20px auto 0;
-  border-top: 3px solid #000;
-  border-left: 4px solid #000;
-  border-bottom: 4px solid #000;
-  border-right: 4px solid #000;
-  background: white;
-  color: black;
-  font-size: 72px;
+  height: 70px;
+  width: 220px;
+  margin: -41px auto 0;
+  font-family: 'Kaushan Script', cursive;
+  color: #75ebf4;
+  font-size: 82px;
+  font-weight: bold;
   text-align: center;
-  padding: 5px 0;
-
+  padding: 7px 0 0 0;
+  text-shadow: 5px 8px rgba(0, 0, 0, 0.5);
 }
 
 .timer {
-  height: 60px;
-  width: 100px;
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  background: #fff;
-  font-size: 38px;
-  color: #000;
-  border: 4px solid #000;
-  padding-top: 20px;
+  background: none;
+  font-family: 'Kaushan Script', cursive;
+  font-size: 58px;
+  font-weight: bold;
+  color: #75ebf4;
+  padding: 20px;
   text-align: center;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .grass {
@@ -226,11 +242,11 @@ button.landing-play {
   border-bottom-right-radius: 10px;
 }
 
-.duck {
+.ship1 {
   height: 38px;
   width: 100px;
   position: absolute;
-  top: 32%;
+  top: 20%;
   left: -50px;
   transform: translateX(-50%) translateY(-50%);
   background: url('../images/cruiser.png');
@@ -241,18 +257,18 @@ button.landing-play {
   height: 99px;
   width: 250px;
   position: absolute;
-  top: 32%;
+  top: 52%;
   left: -250px;
   transform: translateX(-50%) translateY(-50%);
   background: url('../images/superman.png');
   z-index: 0;
 }
 
-.goose {
+.ship2 {
   height: 98px;
   width: 200px;
   position: absolute;
-  top: 50%;
+  top: 75%;
   left: -100px;
   transform: translateX(-50%) translateY(-50%);
   background: url('../images/cargoship.png');
@@ -261,14 +277,14 @@ button.landing-play {
 
 .gameover {
   position: absolute;
-  height: 140px;
-  width: 300px;
+  height: 180px;
+  width: 350px;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  border-radius: 10px;
   background: rgba(0, 0, 0, 0.4);
   color: white;
+  font-family: 'Kaushan Script', cursive;
   text-align: center;
   padding-top: 40px;
   display: none;
@@ -277,7 +293,7 @@ button.landing-play {
 
 .gameover p {
   font-size: 28px;
-  margin: 8px;
+  margin-top: 40px;
 }
 
 .game-over-score {
@@ -285,11 +301,12 @@ button.landing-play {
 }
 
 .play-again {
-  top: 50px;
+  top: 150px;
   width: 200px;
   font-size: 24px;
+  margin-top: 35px;
   background: red;
-  font-family: 'Mountains of Christmas', cursive;
+  font-family: 'Poppins', sans-serif;
   border: 2px solid white;
   color: white;
 }
@@ -298,4 +315,23 @@ button.landing-play {
 .play-again:active {
   letter-spacing: 2px;
   transition: letter-spacing 1s ease;
+}
+
+.levelUp {
+  width: 400px;
+  background: rgba(255, 250, 250, 0.1);
+  top: 35%;
+  left: 27%;
+  font-size: 78px;
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  padding: 2%;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 5px;
+}
+
+.levelTwoDisplay,
+.levelThreeDisplay {
+  display: none;
 }
