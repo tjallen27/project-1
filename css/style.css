@@ -338,7 +338,9 @@ button.landing-play {
 .leaderboard {
   width: 100%;
   margin: 0 auto;
-  background: turquoise;
+  background: url('../images/text-background.jpg');
+  color: #fff;
+  font-family: 'Kaushan Script', cursive;
 }
 
 .container {
@@ -348,18 +350,19 @@ button.landing-play {
 }
 
 .leaderboard h2 {
-  font-size: 32px;
+  font-size: 42px;
   text-align: center;
+  margin-bottom: 40px;
 }
 
 .leaderboard li {
   list-style: none;
   margin-top: 10px;
   padding: 5px 15px;
-  font-size: 20px;
+  font-size: 28px;
   text-align: center;
-  background: rgba(255, 250, 250, 0.8);
-  border: 2px solid #222;
+  background: rgba(255, 250, 250, 0.3);
+  border: 2px solid #fff;
   border-radius: 25px;
   padding: 15px 0;
 }

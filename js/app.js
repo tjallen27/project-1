@@ -86,7 +86,6 @@ $(()=>{
         $gameOverDisplay.html($score);
         $gameOver.fadeIn();
         leaderboard();
-
       }
     }, 1000);
     timerIsRunning = true;
@@ -132,7 +131,8 @@ $(()=>{
   });
 
 
-  //// leaderboard ////
+
+  //// ******** leaderboard ******** ////
   const $highScore = 0;
 
   function leaderboard(){
@@ -150,6 +150,5 @@ $(()=>{
     return parseInt($('span', a).text()) < parseInt($('span', b).text()) ? 1 : -1;
   }
   $('.scoreboard').sort(sortScores).prependTo($('.scoreList'));
-
 
 });
