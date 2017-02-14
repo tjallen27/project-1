@@ -5,7 +5,7 @@ $(()=>{
   const $landingPlay = $('.landing-play');
   const $htp = $('.how-to-play');
   const $toGame = $('.toGame');
-  const $gameBoard = $('.game-board');
+  const $gameScreen = $('.game-screen');
   const $shipOne = $('.ship1');
   const $shipTwo = $('.ship2');
   const $superman = $('.superman');
@@ -85,7 +85,7 @@ $(()=>{
         $timer.text('');
         $gameOverDisplay.html($score);
         $gameOver.fadeIn();
-        leaderboard();
+        displayLeaderboard();
       }
     }, 1000);
     timerIsRunning = true;
@@ -101,7 +101,14 @@ $(()=>{
 
   $toGame.on('click' , ()=>{
     $('html, body').animate({
-      scrollTop: $gameBoard.offset().top
+      scrollTop: $gameScreen.offset().top
+    }, 2000);
+    event.preventDefault();
+  });
+
+  $('i').on('click' , ()=>{
+    $('html, body').animate({
+      scrollTop: $('.leaderboard').offset().top
     }, 2000);
     event.preventDefault();
   });
@@ -149,6 +156,11 @@ $(()=>{
   function sortScores(a,b){
     return parseInt($('span', a).text()) < parseInt($('span', b).text()) ? 1 : -1;
   }
-  $('.scoreboard').sort(sortScores).prependTo($('.scoreList'));
 
+  function displayLeaderboard(){
+    $('i').fadeIn();
+    $('.leaderboard').fadeIn();
+    leaderboard();
+    $('.scoreboard').sort(sortScores).prependTo($('.scoreList'));
+  }
 });
