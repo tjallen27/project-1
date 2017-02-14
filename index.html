@@ -12,7 +12,8 @@
     <script src="js/app.js" charset="utf-8"></script>
   </head>
   <body>
-    <audio class="sound" src="4.wav"></audio>
+    <audio class="shootSound" src="4.wav"></audio>
+    <audio class="gameOverSound" src="gameOverSound.mov"></audio>
 
     <!-- LANDING PAGE -->
     <section class="landing-page">
@@ -28,7 +29,7 @@
       <h3>Click on spaceships to destroy them.</h3>
       <p>50 points each. Zap as many as you can!</p>
       <!-- game images -->
-      <ul>
+      <ul class="images">
         <li>
           <img src="images/cruiser.png" alt="">
         </li>
@@ -40,7 +41,10 @@
         </li>
       </ul>
       <div class="level-list">
-        <button class="toGame">Go to game!</button>
+        <div class="getName">
+          <input id="yourName" type="text" placeholder="What's your name?">
+          <button class="toGame">Go to game!</button>
+        </div>
       </div>
     </section>
 
@@ -73,6 +77,17 @@
           <p>Score: <span class="game-over-score"></span></p>
           <button class="play-again">Play again?</button>
         </div>
+      </div>
+    </section>
+
+    <!-- LEADER BOARD -->
+    <section class="leaderboard">
+      <div class="container">
+        <h2>Highest Score</h2>
+        <ul class="scoreList">
+          <li class="scoreboard">Sean: <span class="CompName">500</span></li>
+          <li class="scoreboard">Kevin: <span class="CompName">200</span></li>
+        </ul>
       </div>
     </section>
   </body>

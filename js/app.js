@@ -48,7 +48,7 @@ $(()=>{
   }
 
   $allTargets.on('click', (e)=>{
-    $('.sound')[0].play();
+    $('.shootSound')[0].play();
     //// run returnToStart
     returnToStart($(e.target));
     //// add 50 to current score
@@ -68,7 +68,6 @@ $(()=>{
     }
   });
 
-
   //// Start timer
   function startGame() {
     timerId = setInterval(() => {
@@ -76,6 +75,7 @@ $(()=>{
       $timer.text(timeRemaining);
 
       if(timeRemaining === 0) {
+        $('.gameOverSound')[0].play();
         clearInterval(timerId);
         returnToStart($allTargets);
         $allTargets
@@ -85,12 +85,14 @@ $(()=>{
         $timer.text('');
         $gameOverDisplay.html($score);
         $gameOver.fadeIn();
+        leaderboard();
+
       }
     }, 1000);
     timerIsRunning = true;
   }
 
-  ///// When landing button is clicked, scroll to top of game-screen
+  ///// When landing button is clicked, scroll to top of htp screen
   $landingPlay.on('click' , ()=>{
     $('html, body').animate({
       scrollTop: $htp.offset().top
@@ -104,7 +106,6 @@ $(()=>{
     }, 2000);
     event.preventDefault();
   });
-
 
   ///// When game-board button is clicked, fade out and start the game
   $playBtn.on('click', () => {
@@ -129,5 +130,26 @@ $(()=>{
     returnToStart($superman);
     startGame();
   });
+
+
+  //// leaderboard ////
+  const $highScore = 0;
+
+  function leaderboard(){
+    const $playerName = $('#yourName').val();
+    if($score > $highScore){
+      $('.leaderboard ul').prepend('<li class="scoreboard"><span class="name"></span></li>');
+      const $boardName = $('.name');
+      console.log($playerName);
+      console.log($score);
+      $boardName.html(`${$playerName} : ${$score}`);
+    }
+  }
+
+  function sortScores(a,b){
+    return parseInt($('span', a).text()) < parseInt($('span', b).text()) ? 1 : -1;
+  }
+  $('.scoreboard').sort(sortScores).prependTo($('.scoreList'));
+
 
 });

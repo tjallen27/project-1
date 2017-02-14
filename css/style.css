@@ -102,7 +102,7 @@ button.landing-play {
   max-width: 880px;
   text-align: center;
   margin: 0 auto;
-  padding: 15% 0;
+  padding: 5% 0;
 }
 
 .how-to-play h2 {
@@ -120,7 +120,7 @@ button.landing-play {
 }
 
 .how-to-play li {
-  display: inline;
+  display: block;
 }
 
 .how-to-play img {
@@ -129,7 +129,7 @@ button.landing-play {
 }
 
 .level-list {
-  margin-top: 20%;
+  margin: 10%;
 }
 
 .toGame {
@@ -282,7 +282,7 @@ button.landing-play {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  background: rgba(0, 0, 0, 0.4);
+  /*background: rgba(0, 0, 0, 0.4);*/
   color: white;
   font-family: 'Kaushan Script', cursive;
   text-align: center;
@@ -318,11 +318,10 @@ button.landing-play {
 }
 
 .levelUp {
-  width: 400px;
-  background: rgba(255, 250, 250, 0.1);
-  top: 35%;
-  left: 27%;
-  font-size: 78px;
+  width: 500px;
+  top: 32%;
+  left: 20%;
+  font-size: 8em;
   text-align: center;
   color: #fff;
   position: absolute;
@@ -334,4 +333,49 @@ button.landing-play {
 .levelTwoDisplay,
 .levelThreeDisplay {
   display: none;
+}
+
+.leaderboard {
+  width: 100%;
+  margin: 0 auto;
+  background: turquoise;
+}
+
+.container {
+  width: 300px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.leaderboard h2 {
+  font-size: 32px;
+  text-align: center;
+}
+
+.leaderboard li {
+  list-style: none;
+  margin-top: 10px;
+  padding: 5px 15px;
+  font-size: 20px;
+  text-align: center;
+  background: rgba(255, 250, 250, 0.8);
+  border: 2px solid #222;
+  border-radius: 25px;
+  padding: 15px 0;
+}
+
+.getName {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.getName input{
+  font-size: 26px;
+  display: block;
+  margin : 0 auto;
+}
+
+.getName button {
+  font-size: 26px;
+  display: block;
 }
