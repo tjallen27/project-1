@@ -25,13 +25,13 @@ $(()=>{
   //// Animate element
   function animate($elem){
     const delay = level === 1 ? 8000 : level === 2 ? 5000 : 3000;
-    const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
-    $elem.animate({
-      left: '105%'
-    }, delay, 'linear', function() {
-      $elem.css({ left: '-150px', top: animateHeight});
-      animate($elem);
-    } );
+    $elem.stop()
+         .animate({
+           left: '110%'
+         }, delay, 'linear', function() {
+           $elem.css({ left: '-150px'});
+           animate($elem);
+         } );
   }
 
   //// When element reaches end or is clicked, return to start position.
