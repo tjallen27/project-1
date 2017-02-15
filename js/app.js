@@ -24,6 +24,7 @@ $(()=>{
   var scoresArr = [];
 
 
+//// FUNCTIONS //////
 
   //// Animate element
   function animate($elem){
@@ -71,6 +72,14 @@ $(()=>{
     }
   });
 
+  //// Display the leaderboard
+  function displayLeaderboard(){
+    var $playerName = $('#yourName').val();
+    $('i').fadeIn('slow');
+    $('.leaderboard h2').html(`${$playerName}'s Scores`);
+    $('.leaderboard').fadeIn();
+  }
+
   //// Start timer
   function startGame() {
     var $playerName = $('#yourName').val();
@@ -105,19 +114,13 @@ $(()=>{
           $(this).append(`<li>${scoresArr[scoresArr.length-1].Score}</li>`);
         });
 
-        //${scoresArr[scoresArr.length-1].Name}:
-
-
-        // $.each(scoresArr,function(k,v){
-        //   $('.leaderboard ul').append('<li>Name:'+k+' Score:'+v+'</li>');
-        // });
-        //
-
         displayLeaderboard();
       }
     }, 1000);
     timerIsRunning = true;
   }
+
+////// EVENTS /////////
 
   ///// When landing button is clicked, scroll to top of htp screen
   $landingPlay.on('click' , ()=>{
@@ -127,6 +130,7 @@ $(()=>{
     event.preventDefault();
   });
 
+  ///// Down to game screen
   $toGame.on('click' , ()=>{
     $('html, body').animate({
       scrollTop: $gameScreen.offset().top
@@ -134,6 +138,7 @@ $(()=>{
     event.preventDefault();
   });
 
+  ///// Down to scoreboard
   $('i').on('click' , ()=>{
     $('html, body').animate({
       scrollTop: $('.leaderboard').offset().top
@@ -151,6 +156,7 @@ $(()=>{
     startGame();
   });
 
+  //// Start game again
   $playAgain.on('click', ()=>{
     $('html, body').animate({
       scrollTop: $gameScreen.offset().top
@@ -169,11 +175,4 @@ $(()=>{
     returnToStart($superman);
     startGame();
   });
-
-  function displayLeaderboard(){
-    var $playerName = $('#yourName').val();
-    $('i').fadeIn('slow');
-    $('.leaderboard h2').html(`${$playerName}'s Scores`);
-    $('.leaderboard').fadeIn();
-  }
 });

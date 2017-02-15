@@ -411,3 +411,73 @@ button.landing-play {
   font-size: 26px;
   display: block;
 }
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .card h1 {
+      font-size: 5em;
+      padding-top: 50%;
+      margin-left: -18%;
+    }
+
+    .how-to-play h2 {
+      font-size: 30px;
+    }
+
+    .how-to-play h3 {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+
+    .how-to-play p {
+      font-size: 14px;
+    }
+
+    .how-to-play img {
+      width: auto;
+    }
+
+    .getName {
+      width: 100%;
+      margin: 30px auto 0;
+    }
+
+    .images {
+      display: none;
+    }
+
+    .getName h3 {
+      margin: 70px auto 0;
+    }
+
+    .getName input{
+      font-size: 26px;
+      display: block;
+      margin : 20px auto 0;
+    }
+
+    .getName button {
+      font-size: 20px;
+      display: block;
+      padding-left: 0;
+      padding-right: 0;
+      width: 75%;
+    }
+
+    .game-board {
+      position: absolute;
+      height: 85%;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      background: url('../images/background-lg.jpg');
+      background-size: cover;
+    }
+
+    .game-screen i {
+      margin-top: 20px;
+    }
+}
