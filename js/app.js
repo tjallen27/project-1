@@ -99,12 +99,21 @@ $(()=>{
           return a.score - b.score;
         });
 
-        /////Append Name and Score to leaderboard list
+        ///Append Name and Score to leaderboard list
         $('.leaderboard ul').each(function (i) {
           console.log(i);
-          $(this).append(`<li>${scoresArr[scoresArr.length-1].Name}: ${scoresArr[scoresArr.length-1].Score}</li>`);
+          $(this).append(`<li>${scoresArr[scoresArr.length-1].Score}</li>`);
         });
 
+        //${scoresArr[scoresArr.length-1].Name}:
+
+
+        // $.each(scoresArr,function(k,v){
+        //   $('.leaderboard ul').append('<li>Name:'+k+' Score:'+v+'</li>');
+        // });
+        //
+
+        displayLeaderboard();
       }
     }, 1000);
     timerIsRunning = true;
@@ -136,12 +145,17 @@ $(()=>{
   $playBtn.on('click', () => {
     //// Fade out button
     $playBtn.fadeOut('fast');
+
     //// Begin animation
     animate($allTargets);
     startGame();
   });
 
   $playAgain.on('click', ()=>{
+    $('html, body').animate({
+      scrollTop: $gameScreen.offset().top
+    }, 1000);
+    event.preventDefault();
     $gameOver.hide();
     timeRemaining = 5;
     $timer.text('5');
@@ -156,14 +170,10 @@ $(()=>{
     startGame();
   });
 
-
-
-  //// ******** LEADER BOARD ******** ////
-
-
-
-  // function displayLeaderboard(){
-  //   $('i').fadeIn('slow');
-  //   $('.leaderboard').fadeIn();
-  // }
+  function displayLeaderboard(){
+    var $playerName = $('#yourName').val();
+    $('i').fadeIn('slow');
+    $('.leaderboard h2').html(`${$playerName}'s Scores`);
+    $('.leaderboard').fadeIn();
+  }
 });
