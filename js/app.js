@@ -23,16 +23,13 @@ $(()=>{
   let level = 1;
   var scoresArr = [];
 
-
-//// FUNCTIONS //////
-
   //// Animate element
   function animate($elem){
-    const delay = level === 1 ? 8000 : level === 2 ? 5000 : 3000;
+    const speed = level === 1 ? 8000 : level === 2 ? 5000 : 3000;
     $elem.stop()
          .animate({
            left: '110%'
-         }, delay, 'linear', function() {
+         }, speed, 'linear', function() {
            $elem.css({ left: '-150px'});
            animate($elem);
          } );
@@ -111,7 +108,7 @@ $(()=>{
         ///Append Name and Score to leaderboard list
         $('.leaderboard ul').each(function (i) {
           console.log(i);
-          $(this).append(`<li>${scoresArr[scoresArr.length-1].Score}</li>`);
+          $(this).prepend(`<li>${scoresArr[scoresArr.length-1].Score}</li>`);
         });
 
         displayLeaderboard();
@@ -163,6 +160,7 @@ $(()=>{
     }, 1000);
     event.preventDefault();
     $gameOver.hide();
+    $('i').hide();
     timeRemaining = 5;
     $timer.text('5');
     $score = 0;

@@ -412,27 +412,34 @@ button.landing-play {
   display: block;
 }
 
-@media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
+/**********RESPONSIVE***********/
+@media screen and (max-width: 480px)
+ {
     .card h1 {
-      font-size: 5em;
+      font-size: 60px;
       padding-top: 50%;
-      margin-left: -18%;
+      margin: 0 auto;
+    }
+
+    .how-to-play {
+      height: 100vh;
+      width: 60%;
+      padding-top: 20%;
     }
 
     .how-to-play h2 {
       font-size: 30px;
+
     }
 
     .how-to-play h3 {
-      margin-top: 30px;
+      margin: 30px 0;
       font-size: 18px;
     }
 
     .how-to-play p {
-      font-size: 14px;
+      font-size: 18px;
+      margin-bottom: 20px;
     }
 
     .how-to-play img {
@@ -453,17 +460,16 @@ button.landing-play {
     }
 
     .getName input{
-      font-size: 26px;
+      font-size: 28px;
       display: block;
       margin : 20px auto 0;
+      width: 75%;
     }
 
     .getName button {
       font-size: 20px;
       display: block;
-      padding-left: 0;
-      padding-right: 0;
-      width: 75%;
+      width: 100%;
     }
 
     .game-board {
