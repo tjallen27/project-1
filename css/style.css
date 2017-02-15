@@ -360,7 +360,7 @@ button.landing-play {
 }
 
 .leaderboard {
-  display: none;
+  /*display: none;*/
   background: #2b2956;
   width: 100%;
   margin: 0 auto;

@@ -18,9 +18,12 @@ $(()=>{
   const $levelTwoDisplay = $('.levelTwoDisplay');
   const $levelThreeDisplay = $('.levelThreeDisplay');
   let $score = 0;
-  let timeRemaining = 25;
+  let timeRemaining = 5;
   let timerId = null;
   let level = 1;
+  var scoresArr = [];
+
+
 
   //// Animate element
   function animate($elem){
@@ -70,6 +73,7 @@ $(()=>{
 
   //// Start timer
   function startGame() {
+    var $playerName = $('#yourName').val();
     timerId = setInterval(() => {
       timeRemaining--;
       $timer.text(timeRemaining);
@@ -85,7 +89,22 @@ $(()=>{
         $timer.text('');
         $gameOverDisplay.html($score);
         $gameOver.fadeIn();
-        displayLeaderboard();
+
+        ////Push name and score object into empty array
+        scoresArr.push({Name: $playerName, Score: $score});
+        console.log(scoresArr);
+
+        /////Sort object by score
+        scoresArr.sort((a,b)=>{
+          return a.score - b.score;
+        });
+
+        /////Append Name and Score to leaderboard list
+        $('.leaderboard ul').each(function (i) {
+          console.log(i);
+          $(this).append(`<li>${scoresArr[scoresArr.length-1].Name}: ${scoresArr[scoresArr.length-1].Score}</li>`);
+        });
+
       }
     }, 1000);
     timerIsRunning = true;
@@ -124,8 +143,8 @@ $(()=>{
 
   $playAgain.on('click', ()=>{
     $gameOver.hide();
-    timeRemaining = 25;
-    $timer.text('25');
+    timeRemaining = 5;
+    $timer.text('5');
     $score = 0;
     level = 1;
     $scoreDisplay.html($score);
@@ -137,35 +156,14 @@ $(()=>{
     startGame();
   });
 
+
+
   //// ******** LEADER BOARD ******** ////
-  const $highScore = parseInt($('.highScorePoints').html());
 
-  function leaderboard(){
-    const $playerName = $('#yourName').val();
-    if($score > $highScore){
 
-      // const $boardName = $('.name');
-      // const $playerPoints = $('.playerPoints');
-      // console.log($playerName);
-      // console.log($score);
-      //$boardName.html(`${$playerName}: `);
-      //$playerPoints.html($score);
-      $('.leaderboard ul').prepend(`<li class="scoreboard"><span class="name">${$playerName}: </span><span class="playerPoints">${$score}</span></li>`);
-    } if ($score < $highScore){
-      $('.leaderboard ul').append(`<li class="scoreboard"><span class="name">${$playerName}: </span><span class="playerPoints">${$score}</span></li>`);
-      // $('.leaderboard ul').append('<li class="scoreboard"><span class="name"></span><span class="playerPoints"></span></li>');
-      // const $boardName = $('.name');
-      // const $playerPoints = $('.playerPoints');
-      // console.log($playerName);
-      // console.log($score);
-      // $boardName.html(`${$playerName}: `);
-      // $playerPoints.html($score);
-    }
-  }
 
-  function displayLeaderboard(){
-    $('i').fadeIn('slow');
-    $('.leaderboard').fadeIn();
-    leaderboard();
-  }
+  // function displayLeaderboard(){
+  //   $('i').fadeIn('slow');
+  //   $('.leaderboard').fadeIn();
+  // }
 });
