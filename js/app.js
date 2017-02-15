@@ -18,7 +18,7 @@ $(()=>{
   const $levelTwoDisplay = $('.levelTwoDisplay');
   const $levelThreeDisplay = $('.levelThreeDisplay');
   let $score = 0;
-  let timeRemaining = 5;
+  let timeRemaining = 25;
   let timerId = null;
   let level = 1;
   var scoresArr = [];
@@ -161,8 +161,8 @@ $(()=>{
     event.preventDefault();
     $gameOver.hide();
     $('i').hide();
-    timeRemaining = 5;
-    $timer.text('5');
+    timeRemaining = 25;
+    $timer.text('25');
     $score = 0;
     level = 1;
     $scoreDisplay.html($score);
