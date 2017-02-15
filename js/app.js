@@ -137,30 +137,35 @@ $(()=>{
     startGame();
   });
 
-
-
-  //// ******** leaderboard ******** ////
-  const $highScore = 0;
+  //// ******** LEADER BOARD ******** ////
+  const $highScore = parseInt($('.highScorePoints').html());
 
   function leaderboard(){
     const $playerName = $('#yourName').val();
     if($score > $highScore){
-      $('.leaderboard ul').prepend('<li class="scoreboard"><span class="name"></span></li>');
-      const $boardName = $('.name');
-      console.log($playerName);
-      console.log($score);
-      $boardName.html(`${$playerName} : ${$score}`);
+
+      // const $boardName = $('.name');
+      // const $playerPoints = $('.playerPoints');
+      // console.log($playerName);
+      // console.log($score);
+      //$boardName.html(`${$playerName}: `);
+      //$playerPoints.html($score);
+      $('.leaderboard ul').prepend(`<li class="scoreboard"><span class="name">${$playerName}: </span><span class="playerPoints">${$score}</span></li>`);
+    } if ($score < $highScore){
+      $('.leaderboard ul').append(`<li class="scoreboard"><span class="name">${$playerName}: </span><span class="playerPoints">${$score}</span></li>`);
+      // $('.leaderboard ul').append('<li class="scoreboard"><span class="name"></span><span class="playerPoints"></span></li>');
+      // const $boardName = $('.name');
+      // const $playerPoints = $('.playerPoints');
+      // console.log($playerName);
+      // console.log($score);
+      // $boardName.html(`${$playerName}: `);
+      // $playerPoints.html($score);
     }
   }
 
-  function sortScores(a,b){
-    return parseInt($('span', a).text()) < parseInt($('span', b).text()) ? 1 : -1;
-  }
-
   function displayLeaderboard(){
-    $('i').fadeIn();
+    $('i').fadeIn('slow');
     $('.leaderboard').fadeIn();
     leaderboard();
-    $('.scoreboard').sort(sortScores).prependTo($('.scoreList'));
   }
 });
