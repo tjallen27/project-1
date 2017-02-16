@@ -266,14 +266,14 @@ button.landing-play {
   border-bottom-right-radius: 10px;
 }
 
-.ship1 {
-  height: 38px;
-  width: 100px;
+.ship3 {
+  height: 150px;
+  width: 150px;
   position: absolute;
   top: 20%;
   left: -50px;
   transform: translateX(-50%) translateY(-50%);
-  background: url('../images/cruiser.png');
+  background: url('../images/ship3.png');
   z-index: 0;
 }
 
@@ -344,7 +344,7 @@ button.landing-play {
 .levelUp {
   width: 500px;
   top: 32%;
-  left: 20%;
+  left: 30%;
   font-size: 8em;
   text-align: center;
   color: #fff;
@@ -378,13 +378,15 @@ button.landing-play {
   font-size: 42px;
   text-align: center;
   margin-bottom: 40px;
-  font-family: 'Kaushan Script', cursive;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 5px;
 }
 
 .leaderboard li {
   /*list-style: upper-roman;*/
   margin-top: 10px;
   padding: 5px 15px;
+  font-family: 'Kaushan Script', cursive;
   font-size: 28px;
   font-weight: 300;
   text-align: center;
@@ -507,7 +509,7 @@ button.landing-play {
     }
 
     .levelUp {
-      width: 100px;
-      font-size: 2em;
+      width: 200px;
+      font-size: 4em;
     }
 }

@@ -82,7 +82,7 @@ zap.setup = function() {
   zap.$htp = $('.how-to-play');
   zap.$toGame = $('.toGame');
   zap.$gameScreen = $('.game-screen');
-  zap.$shipOne = $('.ship1');
+  zap.$shipOne = $('.ship3');
   zap.$shipTwo = $('.ship2');
   zap.$superman = $('.superman');
   zap.$scoreDisplay = $('.score');
@@ -152,16 +152,16 @@ zap.setup = function() {
   this.$allTargets.on('click', (e)=>{
     $('.shootSound')[0].play();
     this.returnToStart($(e.target));
-    this.$score += 200;
+    this.$score += 50;
     this.$scoreDisplay.html(this.$score);
 
     //// LEVEL 2
-    if (this.$score === 300){
+    if (this.$score === 500){
       this.level = 2;
       this.$levelTwoDisplay.fadeIn('slow').fadeOut();
     }
     //// LEVEL 3
-    if (this.$score === 600){
+    if (this.$score === 1000){
       this.level = 3 ;
       this.$levelThreeDisplay.fadeIn('slow').fadeOut();
     }
