@@ -23,9 +23,14 @@ zap.returnToStart = function ($elem){
   this.animate($elem);
 };
 
+
+
 zap.displayLeaderboard = function (){
   const $playerName = $('#yourName').val();
   this.$fontAwe.fadeIn('slow');
+
+
+
   $('.leaderboard h2').html(`${$playerName}'s Scores`);
   $('.leaderboard').fadeIn();
 };
@@ -57,6 +62,7 @@ zap.startGame = function () {
         console.log(i);
         $(this).prepend(`<li>${zap.scoresArr[zap.scoresArr.length-1].Score}</li>`);
       });
+
       this.displayLeaderboard();
     }
   }, 1000);
@@ -92,7 +98,6 @@ zap.setup = function() {
 
   ///// events
   this.$landingPlay.on('click' , ()=>{
-    console.log('button clicked');
     $('html, body').animate({scrollTop: this.$htp.offset().top}, 2000);
     event.preventDefault();
   });
