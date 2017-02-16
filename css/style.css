@@ -19,7 +19,7 @@ button:hover {
 }
 
 .card {
-  top: 40%;
+  top: 45%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   position: relative;
@@ -405,6 +405,9 @@ button.landing-play {
   font-size: 26px;
   display: block;
   margin : 0 auto;
+  border: 2px solid #999;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .getName button {
@@ -415,16 +418,29 @@ button.landing-play {
 /**********RESPONSIVE***********/
 @media screen and (max-width: 480px)
  {
+
+   .landing-page {
+      height: 40vh;
+   }
+
+   button.landing-play {
+     display: none;
+   }
+
+    .card {
+      width: 100%;
+    }
+
     .card h1 {
-      font-size: 60px;
-      padding-top: 50%;
+      font-size: 80px;
+      padding-top: 43%;
       margin: 0 auto;
     }
 
     .how-to-play {
-      height: 100vh;
+      height: 60vh;
       width: 60%;
-      padding-top: 20%;
+      padding-top: 10%;
     }
 
     .how-to-play h2 {
@@ -433,7 +449,7 @@ button.landing-play {
     }
 
     .how-to-play h3 {
-      margin: 30px 0;
+      margin: 15px 0;
       font-size: 18px;
     }
 
@@ -456,7 +472,7 @@ button.landing-play {
     }
 
     .getName h3 {
-      margin: 70px auto 0;
+      margin: 20px auto 0;
     }
 
     .getName input{
@@ -467,7 +483,10 @@ button.landing-play {
     }
 
     .getName button {
-      font-size: 20px;
+      height: 60px;
+      padding: 0 20px;
+      margin-top: 10px;
+      font-size: 18px;
       display: block;
       width: 100%;
     }
@@ -485,5 +504,10 @@ button.landing-play {
 
     .game-screen i {
       margin-top: 20px;
+    }
+
+    .levelUp {
+      width: 100px;
+      font-size: 2em;
     }
 }

@@ -1,176 +1,177 @@
-$(()=>{
-  console.log('JS Loaded');
+var zap = zap || {};
 
-  const $playBtn = $('.play-btn');
-  const $landingPlay = $('.landing-play');
-  const $htp = $('.how-to-play');
-  const $toGame = $('.toGame');
-  const $gameScreen = $('.game-screen');
-  const $shipOne = $('.ship1');
-  const $shipTwo = $('.ship2');
-  const $superman = $('.superman');
-  const $scoreDisplay = $('.score');
-  const $timer = $('.timer');
-  const $gameOver = $('.gameover');
-  const $gameOverDisplay = $('.game-over-score');
-  const $playAgain = $('.play-again');
-  const $allTargets = $('.target');
-  const $levelTwoDisplay = $('.levelTwoDisplay');
-  const $levelThreeDisplay = $('.levelThreeDisplay');
-  let $score = 0;
-  let timeRemaining = 25;
-  let timerId = null;
-  let level = 1;
-  var scoresArr = [];
+//// Animate element
+zap.animate = function ($elem){
+  const speed = this.level === 1 ? 8000 : this.level === 2 ? 5000 : 3000;
+  $elem.stop()
+       .animate({
+         left: '110%'
+       }, speed, 'linear', function() {
+         $elem.css({ left: '-150px'});
+         zap.animate($elem);
+       });
+};
 
-  //// Animate element
-  function animate($elem){
-    const speed = level === 1 ? 8000 : level === 2 ? 5000 : 3000;
-    $elem.stop()
-         .animate({
-           left: '110%'
-         }, speed, 'linear', function() {
-           $elem.css({ left: '-150px'});
-           animate($elem);
-         } );
-  }
+//// When element reaches end or is clicked, return to start position.
+zap.returnToStart = function ($elem){
+  const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
 
-  //// When element reaches end or is clicked, return to start position.
-  function returnToStart($elem){
-    const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
+  $elem
+    .stop()
+    .hide()
+    .css({ left: '-150px', top: animateHeight })
+    .show();
 
-    $elem
-      .stop()
-      .hide()
-      .css({ left: '-150px', top: animateHeight })
-      .show();
+  this.animate($elem);
+};
 
-    animate($elem);
-  }
+//// Display the leaderboard
+zap.displayLeaderboard = function (){
+  const $playerName = $('#yourName').val();
+  $('i').fadeIn('slow');
+  $('.leaderboard h2').html(`${$playerName}'s Scores`);
+  $('.leaderboard').fadeIn();
+};
 
-  $allTargets.on('click', (e)=>{
-    $('.shootSound')[0].play();
-    //// run returnToStart
-    returnToStart($(e.target));
-    //// add 50 to current score
-    $score += 50;
-    $scoreDisplay.html($score);
+//// Start timer
+zap.startGame = function () {
+  var $playerName = $('#yourName').val();
+  this.timerId = setInterval(() => {
+    this.timeRemaining--;
+    this.$timer.text(this.timeRemaining);
 
-    //// LEVEL UP
-    if ($score === 600){
-      level = 2;
-      console.log('level 2 reached!');
-      $levelTwoDisplay.fadeIn('slow').fadeOut();
+    if(this.timeRemaining === 0) {
+      $('.gameOverSound')[0].play();
+      clearInterval(this.timerId);
+      this.returnToStart(this.$allTargets);
+      this.$allTargets
+        .stop()
+        .hide();
+      this.$timer.hide();
+      this.$timer.text('');
+      this.$gameOverDisplay.html(this.$score);
+      this.$gameOver.fadeIn();
+
+      ////Push name and score object into empty array
+      this.scoresArr.push({Name: $playerName, Score: this.$score});
+      console.log(this.scoresArr);
+
+      /////Sort object by score
+      this.scoresArr.sort((a,b)=>{
+        return a.score - b.score;
+      });
+
+      ///Append Name and Score to leaderboard list
+      $('.leaderboard ul').each(function (i) {
+        console.log(i);
+        console.log(zap.scoresArr);
+        console.log(this.scoresArr);
+        $(this).prepend(`<li>${zap.scoresArr[zap.scoresArr.length-1].Score}</li>`);
+      });
+      this.displayLeaderboard();
     }
-    if ($score === 1200){
-      level = 3 ;
-      console.log('level 3 reached!');
-      $levelThreeDisplay.fadeIn('slow').fadeOut();
-    }
-  });
+  }, 1000);
+  this.timerIsRunning = true;
+};
 
-  //// Display the leaderboard
-  function displayLeaderboard(){
-    var $playerName = $('#yourName').val();
-    $('i').fadeIn('slow');
-    $('.leaderboard h2').html(`${$playerName}'s Scores`);
-    $('.leaderboard').fadeIn();
-  }
+/********SETUP FUNCTION*******/
+zap.setup = function() {
 
-  //// Start timer
-  function startGame() {
-    var $playerName = $('#yourName').val();
-    timerId = setInterval(() => {
-      timeRemaining--;
-      $timer.text(timeRemaining);
+  zap.$playBtn = $('.play-btn');
+  zap.$landingPlay = $('.landing-play');
+  zap.$htp = $('.how-to-play');
+  zap.$toGame = $('.toGame');
+  zap.$gameScreen = $('.game-screen');
+  zap.$shipOne = $('.ship1');
+  zap.$shipTwo = $('.ship2');
+  zap.$superman = $('.superman');
+  zap.$scoreDisplay = $('.score');
+  zap.$timer = $('.timer');
+  zap.$gameOver = $('.gameover');
+  zap.$gameOverDisplay = $('.game-over-score');
+  zap.$playAgain = $('.play-again');
+  zap.$allTargets = $('.target');
+  zap.$levelTwoDisplay = $('.levelTwoDisplay');
+  zap.$levelThreeDisplay = $('.levelThreeDisplay');
+  zap.$score = 0;
+  zap.timeRemaining = 25;
+  zap.timerId = null;
+  zap.level = 1;
+  zap.scoresArr = [];
 
-      if(timeRemaining === 0) {
-        $('.gameOverSound')[0].play();
-        clearInterval(timerId);
-        returnToStart($allTargets);
-        $allTargets
-          .stop()
-          .hide();
-        $timer.hide();
-        $timer.text('');
-        $gameOverDisplay.html($score);
-        $gameOver.fadeIn();
-
-        ////Push name and score object into empty array
-        scoresArr.push({Name: $playerName, Score: $score});
-        console.log(scoresArr);
-
-        /////Sort object by score
-        scoresArr.sort((a,b)=>{
-          return a.score - b.score;
-        });
-
-        ///Append Name and Score to leaderboard list
-        $('.leaderboard ul').each(function (i) {
-          console.log(i);
-          $(this).prepend(`<li>${scoresArr[scoresArr.length-1].Score}</li>`);
-        });
-
-        displayLeaderboard();
-      }
-    }, 1000);
-    timerIsRunning = true;
-  }
-
-////// EVENTS /////////
-
-  ///// When landing button is clicked, scroll to top of htp screen
-  $landingPlay.on('click' , ()=>{
-    $('html, body').animate({
-      scrollTop: $htp.offset().top
-    }, 2000);
+///// When landing button is clicked, scroll to top of htp screen
+  this.$landingPlay.on('click' , ()=>{
+    console.log('button clicked');
+    $('html, body').animate({scrollTop: this.$htp.offset().top}, 2000);
     event.preventDefault();
   });
 
   ///// Down to game screen
-  $toGame.on('click' , ()=>{
-    $('html, body').animate({
-      scrollTop: $gameScreen.offset().top
-    }, 2000);
+  this.$toGame.on('click' , ()=>{
+    $('html, body').animate({scrollTop: this.$gameScreen.offset().top}, 2000);
     event.preventDefault();
   });
 
   ///// Down to scoreboard
   $('i').on('click' , ()=>{
-    $('html, body').animate({
-      scrollTop: $('.leaderboard').offset().top
-    }, 2000);
+    $('html, body').animate({scrollTop: $('.leaderboard').offset().top}, 2000);
     event.preventDefault();
   });
 
   ///// When game-board button is clicked, fade out and start the game
-  $playBtn.on('click', () => {
-    //// Fade out button
-    $playBtn.fadeOut('fast');
-
-    //// Begin animation
-    animate($allTargets);
-    startGame();
+  this.$playBtn.on('click', () => {
+    this.$playBtn.fadeOut('fast');
+    this.animate(this.$allTargets);
+    this.startGame();
   });
 
   //// Start game again
-  $playAgain.on('click', ()=>{
-    $('html, body').animate({
-      scrollTop: $gameScreen.offset().top
-    }, 1000);
+  zap.$playAgain.on('click', ()=>{
+    $('html, body').animate({scrollTop: this.$gameScreen.offset().top}, 1000);
     event.preventDefault();
-    $gameOver.hide();
+
+    this.$gameOver.hide();
     $('i').hide();
-    timeRemaining = 25;
-    $timer.text('25');
-    $score = 0;
-    level = 1;
-    $scoreDisplay.html($score);
-    $allTargets.show();
-    $timer.show();
-    returnToStart($shipOne);
-    returnToStart($shipTwo);
-    returnToStart($superman);
-    startGame();
+
+    this.timeRemaining = 25;
+    this.$timer.text('25');
+    this.$score = 0;
+    this.level = 1;
+    this.$scoreDisplay.html(this.$score);
+
+    this.$allTargets.show();
+    this.$timer.show();
+
+    this.returnToStart(this.$shipOne);
+    this.returnToStart(this.$shipTwo);
+    this.returnToStart(this.$superman);
+    this.startGame();
   });
-});
+
+  this.$allTargets.on('click', (e)=>{
+    $('.shootSound')[0].play();
+    this.returnToStart($(e.target));
+    if($(e.target).hasClass('superman')){
+      this.$score += 200;
+    } if ($(e.target).hasClass('ship2')){
+      this.$score += 100;
+    } if ($(e.target).hasClass('ship1')){
+      this.$score += 50;
+    }
+
+    this.$scoreDisplay.html(this.$score);
+
+    //// LEVEL 2
+    if (this.$score === 300){
+      this.level = 2;
+      this.$levelTwoDisplay.fadeIn('slow').fadeOut();
+    }
+    //// LEVEL 3
+    if (this.$score === 600){
+      this.level = 3 ;
+      this.$levelThreeDisplay.fadeIn('slow').fadeOut();
+    }
+  });
+};
+
+$(zap.setup.bind(zap));
