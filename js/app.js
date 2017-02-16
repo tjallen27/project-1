@@ -1,6 +1,5 @@
 var zap = zap || {};
 
-//// Animate element
 zap.animate = function ($elem){
   const speed = this.level === 1 ? 8000 : this.level === 2 ? 5000 : 3000;
   $elem.stop()
@@ -12,7 +11,6 @@ zap.animate = function ($elem){
        });
 };
 
-//// When element reaches end or is clicked, return to start position.
 zap.returnToStart = function ($elem){
   const animateHeight = (Math.floor(Math.random() * 61) + 10)+'%';
 
@@ -25,7 +23,6 @@ zap.returnToStart = function ($elem){
   this.animate($elem);
 };
 
-//// Display the leaderboard
 zap.displayLeaderboard = function (){
   const $playerName = $('#yourName').val();
   $('i').fadeIn('slow');
@@ -33,7 +30,6 @@ zap.displayLeaderboard = function (){
   $('.leaderboard').fadeIn();
 };
 
-//// Start timer
 zap.startGame = function () {
   var $playerName = $('#yourName').val();
   this.timerId = setInterval(() => {
@@ -52,20 +48,13 @@ zap.startGame = function () {
       this.$gameOverDisplay.html(this.$score);
       this.$gameOver.fadeIn();
 
-      ////Push name and score object into empty array
       this.scoresArr.push({Name: $playerName, Score: this.$score});
-      console.log(this.scoresArr);
-
-      /////Sort object by score
       this.scoresArr.sort((a,b)=>{
         return a.score - b.score;
       });
 
-      ///Append Name and Score to leaderboard list
       $('.leaderboard ul').each(function (i) {
         console.log(i);
-        console.log(zap.scoresArr);
-        console.log(this.scoresArr);
         $(this).prepend(`<li>${zap.scoresArr[zap.scoresArr.length-1].Score}</li>`);
       });
       this.displayLeaderboard();
@@ -74,7 +63,7 @@ zap.startGame = function () {
   this.timerIsRunning = true;
 };
 
-/********SETUP FUNCTION*******/
+/******** SETUP *******/
 zap.setup = function() {
 
   zap.$playBtn = $('.play-btn');
@@ -100,33 +89,29 @@ zap.setup = function() {
   zap.level = 1;
   zap.scoresArr = [];
 
-  ///// When landing button is clicked, scroll to top of htp screen
+  ///// events
   this.$landingPlay.on('click' , ()=>{
     console.log('button clicked');
     $('html, body').animate({scrollTop: this.$htp.offset().top}, 2000);
     event.preventDefault();
   });
 
-  ///// Down to game screen
   this.$toGame.on('click' , ()=>{
     $('html, body').animate({scrollTop: this.$gameScreen.offset().top}, 2000);
     event.preventDefault();
   });
 
-  ///// Down to scoreboard
   $('i').on('click' , ()=>{
     $('html, body').animate({scrollTop: $('.leaderboard').offset().top}, 2000);
     event.preventDefault();
   });
 
-  ///// When game-board button is clicked, fade out and start the game
   this.$playBtn.on('click', () => {
     this.$playBtn.fadeOut('fast');
     this.animate(this.$allTargets);
     this.startGame();
   });
 
-  //// Start game again
   zap.$playAgain.on('click', ()=>{
     $('html, body').animate({scrollTop: this.$gameScreen.offset().top}, 1000);
     event.preventDefault();

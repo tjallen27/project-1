@@ -513,3 +513,23 @@ button.landing-play {
       font-size: 4em;
     }
 }
+
+@media screen and (max-width: 770px){
+  .card {
+    top: 45%;
+    left: 48%;
+    position: relative;
+    width: 100%;
+  }
+
+  .card h1 {
+    font-size: 10em;
+    text-align: center;
+  }
+
+  .levelUp {
+    left: 10%;
+    font-size: 5em;
+    text-align: center;
+  }
+}
