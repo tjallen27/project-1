@@ -93,13 +93,14 @@ zap.setup = function() {
   zap.$allTargets = $('.target');
   zap.$levelTwoDisplay = $('.levelTwoDisplay');
   zap.$levelThreeDisplay = $('.levelThreeDisplay');
+  zap.$shotgun = $('.shootSound')[0];
   zap.$score = 0;
   zap.timeRemaining = 25;
   zap.timerId = null;
   zap.level = 1;
   zap.scoresArr = [];
 
-///// When landing button is clicked, scroll to top of htp screen
+  ///// When landing button is clicked, scroll to top of htp screen
   this.$landingPlay.on('click' , ()=>{
     console.log('button clicked');
     $('html, body').animate({scrollTop: this.$htp.offset().top}, 2000);
@@ -151,14 +152,7 @@ zap.setup = function() {
   this.$allTargets.on('click', (e)=>{
     $('.shootSound')[0].play();
     this.returnToStart($(e.target));
-    if($(e.target).hasClass('superman')){
-      this.$score += 200;
-    } if ($(e.target).hasClass('ship2')){
-      this.$score += 100;
-    } if ($(e.target).hasClass('ship1')){
-      this.$score += 50;
-    }
-
+    this.$score += 200;
     this.$scoreDisplay.html(this.$score);
 
     //// LEVEL 2
