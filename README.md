@@ -20,3 +20,5 @@ Each target is worth 50 points.
 The targets get quicker as you move up levels.
 
 Once the timer has finished, either scroll down or click on the animated chevron to view a list of your session score.
+
+Click "Play Again" to reset the timer and go again. 
