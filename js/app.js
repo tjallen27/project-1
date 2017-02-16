@@ -83,6 +83,7 @@ zap.setup = function() {
   zap.$levelTwoDisplay = $('.levelTwoDisplay');
   zap.$levelThreeDisplay = $('.levelThreeDisplay');
   zap.$shotgun = $('.shootSound')[0];
+  zap.$fontAwe = $('i');
   zap.$score = 0;
   zap.timeRemaining = 25;
   zap.timerId = null;
@@ -101,7 +102,7 @@ zap.setup = function() {
     event.preventDefault();
   });
 
-  $('i').on('click' , ()=>{
+  this.$fontAwe.on('click' , ()=>{
     $('html, body').animate({scrollTop: $('.leaderboard').offset().top}, 2000);
     event.preventDefault();
   });
@@ -112,12 +113,12 @@ zap.setup = function() {
     this.startGame();
   });
 
-  zap.$playAgain.on('click', ()=>{
+  this.$playAgain.on('click', ()=>{
     $('html, body').animate({scrollTop: this.$gameScreen.offset().top}, 1000);
     event.preventDefault();
 
     this.$gameOver.hide();
-    $('i').hide();
+    this.$fontAwe.hide();
 
     this.timeRemaining = 25;
     this.$timer.text('25');
