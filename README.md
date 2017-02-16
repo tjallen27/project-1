@@ -14,8 +14,8 @@ Each target is worth 50 points.
 
 #####The game starts on level 1 and as you gain points you move up levels:
 
-* Level 2 = 500 points
-* Level 3 = 1000 points
+* **Level 2** = 500 points
+* **Level 3** = 1000 points
 
 The targets get quicker as you move up levels.
 
