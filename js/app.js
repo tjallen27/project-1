@@ -136,7 +136,14 @@ zap.setup = function() {
   });
 
   this.$allTargets.on('click', (e)=>{
-    $('.shootSound')[0].play();
+    if (this.$shotgun.paused) {
+      this.$shotgun.play();
+    } else {
+      this.$shotgun.pause();
+      this.$shotgun.currentTime = 0;
+      this.$shotgun.play();
+    }
+
     this.returnToStart($(e.target));
     this.$score += 50;
     this.$scoreDisplay.html(this.$score);
