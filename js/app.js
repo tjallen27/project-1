@@ -25,7 +25,7 @@ zap.returnToStart = function ($elem){
 
 zap.displayLeaderboard = function (){
   const $playerName = $('#yourName').val();
-  $('i').fadeIn('slow');
+  this.$fontAwe.fadeIn('slow');
   $('.leaderboard h2').html(`${$playerName}'s Scores`);
   $('.leaderboard').fadeIn();
 };
@@ -124,8 +124,8 @@ zap.setup = function() {
     this.$timer.text('25');
     this.$score = 0;
     this.level = 1;
-    this.$scoreDisplay.html(this.$score);
 
+    this.$scoreDisplay.html(this.$score);
     this.$allTargets.show();
     this.$timer.show();
 

@@ -33,11 +33,7 @@ button:hover {
   font-size: 12em;
   font-family: 'Poppins', sans-serif;
   color: rgba(255, 255, 255, 0.6);
-  /*background-image: url('../images/text-background1.jpg');
-  background-size: contain;
-  color:transparent;
- -webkit-background-clip: text;
- background-clip: text;*/
+  padding-top: 10%;
 }
 
 button.landing-play {
@@ -124,7 +120,6 @@ button.landing-play {
 }
 
 .how-to-play img {
-  margin-top: 30px;
   margin-right: 20px;
 }
 
@@ -418,6 +413,27 @@ button.landing-play {
 }
 
 /**********RESPONSIVE***********/
+@media screen and (max-width: 860px){
+  .card {
+    top: 45%;
+    left: 48%;
+    position: relative;
+    width: 100%;
+  }
+
+  .card h1 {
+    padding-top: 15%;
+    font-size: 10em;
+    text-align: center;
+  }
+
+  .levelUp {
+    left: 10%;
+    font-size: 5em;
+    text-align: center;
+  }
+}
+
 @media screen and (max-width: 480px)
  {
 
@@ -434,7 +450,7 @@ button.landing-play {
     }
 
     .card h1 {
-      font-size: 80px;
+      font-size: 5em;
       padding-top: 43%;
       margin: 0 auto;
     }
@@ -512,24 +528,4 @@ button.landing-play {
       width: 200px;
       font-size: 4em;
     }
-}
-
-@media screen and (max-width: 770px){
-  .card {
-    top: 45%;
-    left: 48%;
-    position: relative;
-    width: 100%;
-  }
-
-  .card h1 {
-    font-size: 10em;
-    text-align: center;
-  }
-
-  .levelUp {
-    left: 10%;
-    font-size: 5em;
-    text-align: center;
-  }
 }
