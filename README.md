@@ -44,3 +44,5 @@ Finally, I updated the CSS to get the look I wanted and built on it to make sure
 I had one main issue when developing the game. 
 
 I intended on creating a leaderboard at the bottom of the page which updated after each game was played. The scores would be displayed in order (Highest to Lowest). I couldn't quite wrap my head around it in time so decided to leave it as is.
+
+[PLAY THE GAME!](https://still-forest-38751.herokuapp.com/)
